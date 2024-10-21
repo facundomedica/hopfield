@@ -64,7 +64,7 @@ func displayState(state [size]int) {
 }
 
 func main() {
-	// Define some training patterns for 'A', 'B', and 'C' (10x10 bitmap represented as 1D array)
+	// Define some training patterns for 'A', 'V', and 'Z'
 	patternA := [size]int{
 		-1, -1, 1, 1, 1, 1, 1, -1, -1, -1,
 		-1, 1, -1, -1, -1, -1, -1, 1, -1, -1,
