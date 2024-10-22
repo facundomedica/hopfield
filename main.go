@@ -109,7 +109,7 @@ func main() {
 	network.Train([][size]int{patternA, patternV, patternZ})
 
 	noisyInput := patternV
-	for i := 0; i < 30; i++ { // agregamos ruido
+	for i := 0; i < 10; i++ { // agregamos ruido
 		index := rand.Intn(size)
 		noisyInput[index] = -noisyInput[index]
 	}
@@ -136,21 +136,24 @@ func main() {
 	}
 
 	inputs := []input{}
-	for i := 0; i < 100; i++ {
-		// selecciona A o V de manera aleatoria
+	for i := 0; i < 1000; i++ {
+		// selecciona A, V o Z de manera aleatoria
 		var pattern [size]int
 		var expected [size]int
-		if rand.Intn(2) == 0 {
+		switch rand.Intn(3) {
+		case 0:
 			pattern = patternA
-			expected = patternA
-		} else {
+		case 1:
 			pattern = patternV
-			expected = patternV
+		case 2:
+			pattern = patternZ
 		}
 
-		// agrega ruido, con hasta 30 bits cambiados
+		expected = pattern
+
+		// agrega ruido, con hasta 50 bits cambiados
 		noisyInput := pattern
-		amountOfNoise := rand.Intn(40)
+		amountOfNoise := rand.Intn(50)
 		for i := 0; i < amountOfNoise; i++ {
 			index := rand.Intn(size)
 			noisyInput[index] = -noisyInput[index]
